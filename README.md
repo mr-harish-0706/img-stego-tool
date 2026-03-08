@@ -88,9 +88,15 @@ You can get application from below link
 
 ## [Download the latest Windows version here](https://github.com/mr-harish-0706/img-stego-tool/releases/latest)
 
+## Screenshots : 
+
+![App's Screenshot](./screenshots/Screenshot%202026-03-08%20174708.png)
+
+
 ##  License
 
 This project is licensed under the ISC License.
+
 
 
 

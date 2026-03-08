@@ -86,10 +86,11 @@ imgstego/
 ---
 You can get application from below link 
 
-## [Download the latest version here](https://github.com/YOUR_USERNAME/imgstego/releases)
+## [Download the latest version here](https://github.com/mr-harish-0706/imgstego/releases)
 
 ##  License
 
 This project is licensed under the ISC License.
+
 
 

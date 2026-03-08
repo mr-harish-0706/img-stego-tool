@@ -86,11 +86,12 @@ imgstego/
 ---
 You can get application from below link 
 
-## [Download the latest version here](https://github.com/mr-harish-0706/img-stego-tool/releases)
+## [Download the latest Windows version here](https://github.com/mr-harish-0706/img-stego-tool/releases/latest)
 
 ##  License
 
 This project is licensed under the ISC License.
+
 
 
 

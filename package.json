@@ -1,0 +1,19 @@
+{
+  "name": "imgstego",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "crypto-js": "^4.2.0",
+    "electron": "32.0.0",
+    "pngjs": "^7.0.0"
+  }
+}

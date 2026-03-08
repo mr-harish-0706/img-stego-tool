@@ -12,6 +12,9 @@ A desktop steganography application that hides and extracts secret messages insi
 ## Installation
 
 git clone https://github.com/yourusername/imgstego
+
 cd imgstego
+
 npm install
+
 npm start

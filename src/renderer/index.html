@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stego Toolkit</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Stego<span>Toolkit</span></h1>
+        <p>Securely hide and extract messages in PNG images</p>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="encode-tab">Encode</button>
+        <button class="tab-btn" data-tab="decode-tab">Decode</button>
+      </div>
+
+      <main>
+        <!-- Encode Section -->
+        <section id="encode-tab" class="tab-content active">
+          <div class="card">
+            <div class="input-group">
+              <label>Image Source</label>
+              <div class="file-selector">
+                <button id="select-image-encode" class="secondary-btn">
+                  Select PNG Image
+                </button>
+                <span id="selected-path-encode" class="path-display"
+                  >No image selected</span
+                >
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Secret Message</label>
+              <textarea
+                id="message-input"
+                placeholder="Enter your secret message here..."
+              ></textarea>
+            </div>
+
+            <div class="input-group">
+              <label>Encryption Password (Optional)</label>
+              <input
+                type="password"
+                id="password-encode"
+                placeholder="Keep it blank for no encryption"
+              />
+            </div>
+
+            <button id="encode-btn" class="primary-btn">Encode and Save</button>
+            <div id="encode-status" class="status-msg"></div>
+          </div>
+        </section>
+
+        <!-- Decode Section -->
+        <section id="decode-tab" class="tab-content">
+          <div class="card">
+            <div class="input-group">
+              <label>Stego Image</label>
+              <div class="file-selector">
+                <button id="select-image-decode" class="secondary-btn">
+                  Select Stego Image
+                </button>
+                <span id="selected-path-decode" class="path-display"
+                  >No image selected</span
+                >
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Decryption Password</label>
+              <input
+                type="password"
+                id="password-decode"
+                placeholder="Enter password if message was encrypted"
+              />
+            </div>
+
+            <button id="decode-btn" class="primary-btn">Decode Message</button>
+
+            <div class="result-area">
+              <label>Hidden Message</label>
+              <div id="decoded-output" class="output-box">
+                No message extracted yet.
+              </div>
+            </div>
+            <div id="decode-status" class="status-msg"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-# 🖼️ ImgStego
+# Img Stegnography tool
 
 A modern, secure desktop steganography application that allows you to hide secret messages inside PNG images using the **Least Significant Bit (LSB)** technique.
 
@@ -6,7 +6,7 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 
 ---
 
-## 🚀 Features
+##  Features
 
 - **Double Security**: Encrypt messages with **AES-256** before hiding them.
 - **Stealth Mode**: Uses LSB steganography to ensure zero visual difference in the carrier image.
@@ -16,7 +16,7 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Electron](https://www.electronjs.org/) (Desktop Environment)
 - **Logic**: Node.js & Vanilla JavaScript
@@ -26,9 +26,9 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 
 ---
 
-## 📖 How to Use
+##  How to Use
 
-### 📥 Encoding (Hiding a Message)
+###  Encoding (Hiding a Message)
 
 1. **Launch** the application.
 2. Select the **Encode** tab.
@@ -37,7 +37,7 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 5. (Optional) Enter a **Password** to encrypt the message.
 6. Click **"Encode & Save"** and choose where to save your new stego-image.
 
-### 📤 Decoding (Extracting a Message)
+###  Decoding (Extracting a Message)
 
 1. Select the **Decode** tab.
 2. Click **"Select Image"** to choose the PNG containing a hidden message.
@@ -47,7 +47,7 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 imgstego/
@@ -63,7 +63,7 @@ imgstego/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 1. **Clone the repository**:
 
@@ -85,6 +85,7 @@ imgstego/
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the ISC License.
+

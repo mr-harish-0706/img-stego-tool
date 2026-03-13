@@ -1,36 +1,49 @@
 /**
- * Utility for binary conversion
+ * Utility for binary conversion using Buffers for performance
  */
 
 /**
- * Converts a string to its binary representation.
- * @param {string} text
- * @returns {string} Binary string
+ * Converts a string or Buffer to a bit array (Uint8Array of 0s and 1s)
+ * @param {string|Buffer} data
+ * @returns {Uint8Array}
  */
-function textToBinary(text) {
-  return text
-    .split("")
-    .map((char) => {
-      return char.charCodeAt(0).toString(2).padStart(8, "0");
-    })
-    .join("");
+function toBitArray(data) {
+  const buf = Buffer.isBuffer(data) ? data : Buffer.from(data, "utf8");
+  const bits = new Uint8Array(buf.length * 8);
+  for (let i = 0; i < buf.length; i++) {
+    const byte = buf[i];
+    for (let j = 0; j < 8; j++) {
+      bits[i * 8 + j] = (byte >> (7 - j)) & 1;
+    }
+  }
+  return bits;
 }
 
 /**
- * Converts a binary string back to text.
- * @param {string} binary
- * @returns {string} Text string
+ * Converts a bit array (Uint8Array of 0s and 1s) back to a Buffer
+ * @param {Uint8Array} bits
+ * @returns {Buffer}
  */
-function binaryToText(binary) {
-  let text = "";
-  for (let i = 0; i < binary.length; i += 8) {
-    const byte = binary.slice(i, i + 8);
-    text += String.fromCharCode(parseInt(byte, 2));
+function fromBitArray(bits) {
+  const byteCount = Math.floor(bits.length / 8);
+  const buf = Buffer.alloc(byteCount);
+  for (let i = 0; i < byteCount; i++) {
+    let byte = 0;
+    for (let j = 0; j < 8; j++) {
+      byte = (byte << 1) | bits[i * 8 + j];
+    }
+    buf[i] = byte;
   }
-  return text;
+  return buf;
 }
 
 module.exports = {
-  textToBinary,
-  binaryToText,
+  toBitArray,
+  fromBitArray,
+  // Keep old names for compatibility during migration if needed
+  textToBinary: (text) => Array.from(toBitArray(text)).join(""),
+  binaryToText: (bin) =>
+    fromBitArray(
+      new Uint8Array(bin.split("").map((b) => parseInt(b))),
+    ).toString("utf8"),
 };

@@ -1,8 +1,11 @@
-const { contextBridge, ipcRenderer } = require("electron");
+const { contextBridge, ipcRenderer, webUtils } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  selectFile: () => ipcRenderer.invoke("select-file"),
-  saveFile: () => ipcRenderer.invoke("save-file"),
+  selectFile: (filters) => ipcRenderer.invoke("select-file", filters),
+  saveFile: (filters) => ipcRenderer.invoke("save-file", filters),
   encode: (data) => ipcRenderer.invoke("encode", data),
   decode: (data) => ipcRenderer.invoke("decode", data),
+  saveBuffer: (data) => ipcRenderer.invoke("save-buffer", data),
+  reload: () => ipcRenderer.send("reload-app"),
+  getFilePath: (file) => webUtils.getPathForFile(file),
 });

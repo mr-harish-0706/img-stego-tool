@@ -13,7 +13,16 @@
   <body>
     <div class="container">
       <header>
-        <h1>Stego<span>Toolkit</span></h1>
+        <div class="header-main">
+          <h1>Stego<span>Toolkit</span></h1>
+          <button id="reload-btn" class="icon-btn" title="Reload Application">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+              />
+            </svg>
+          </button>
+        </div>
         <p>Securely hide and extract messages in PNG images</p>
       </header>
 
@@ -27,36 +36,80 @@
         <section id="encode-tab" class="tab-content active">
           <div class="card">
             <div class="input-group">
-              <label>Image Source</label>
-              <div class="file-selector">
+              <label>1. Select Image (PNG, BMP, TIFF)</label>
+              <div id="drop-zone-encode" class="drop-zone">
+                <div class="drop-zone-content">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+                  <span>Drag & Drop or Click to Select</span>
+                </div>
                 <button id="select-image-encode" class="secondary-btn">
-                  Select PNG Image
+                  Browse Files
                 </button>
+              </div>
+              <div id="selected-image-info-encode" class="file-info-bar hidden">
                 <span id="selected-path-encode" class="path-display"
                   >No image selected</span
+                >
+                <span id="image-capacity" class="capacity-tag"
+                  >Capacity: 0 chars</span
+                >
+              </div>
+            </div>
+
+            <div class="mode-toggle">
+              <button id="mode-text" class="mode-btn active">Hide Text</button>
+              <button id="mode-file" class="mode-btn">Hide File</button>
+            </div>
+
+            <div id="text-input-group" class="input-group">
+              <label>2. Secret Message</label>
+              <textarea
+                id="message-input"
+                placeholder="Enter your secret message here..."
+              ></textarea>
+              <div class="input-stats">
+                <span id="char-count">0 characters</span>
+              </div>
+            </div>
+
+            <div id="file-input-group" class="input-group hidden">
+              <label>2. Select File to Hide</label>
+              <div class="file-selector">
+                <button id="select-hidden-file" class="secondary-btn">
+                  Select any file
+                </button>
+                <span id="selected-hidden-file-name" class="path-display"
+                  >No file selected</span
                 >
               </div>
             </div>
 
             <div class="input-group">
-              <label>Secret Message</label>
-              <textarea
-                id="message-input"
-                placeholder="Enter your secret message here..."
-              ></textarea>
+              <label>3. Encryption Password (Strongly Recommended)</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password-encode"
+                  placeholder="Leave blank for no encryption"
+                />
+                <span class="hint">AES-256 protected</span>
+              </div>
             </div>
 
-            <div class="input-group">
-              <label>Encryption Password (Optional)</label>
-              <input
-                type="password"
-                id="password-encode"
-                placeholder="Keep it blank for no encryption"
-              />
+            <div class="action-section">
+              <button id="encode-btn" class="primary-btn">
+                Encode and Save Image
+              </button>
+              <div
+                id="encode-progress-container"
+                class="progress-container hidden"
+              >
+                <div id="encode-progress-bar" class="progress-bar"></div>
+              </div>
+              <div id="encode-status" class="status-msg"></div>
             </div>
-
-            <button id="encode-btn" class="primary-btn">Encode and Save</button>
-            <div id="encode-status" class="status-msg"></div>
           </div>
         </section>
 
@@ -64,35 +117,56 @@
         <section id="decode-tab" class="tab-content">
           <div class="card">
             <div class="input-group">
-              <label>Stego Image</label>
-              <div class="file-selector">
+              <label>1. Select Stego Image</label>
+              <div id="drop-zone-decode" class="drop-zone">
+                <div class="drop-zone-content">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+                  <span>Drag & Drop Stego Image</span>
+                </div>
                 <button id="select-image-decode" class="secondary-btn">
-                  Select Stego Image
+                  Browse Files
                 </button>
-                <span id="selected-path-decode" class="path-display"
-                  >No image selected</span
-                >
               </div>
+              <span id="selected-path-decode" class="path-display"
+                >No image selected</span
+              >
             </div>
 
             <div class="input-group">
-              <label>Decryption Password</label>
+              <label>2. Decryption Password</label>
               <input
                 type="password"
                 id="password-decode"
-                placeholder="Enter password if message was encrypted"
+                placeholder="Enter password if encrypted"
               />
             </div>
 
-            <button id="decode-btn" class="primary-btn">Decode Message</button>
+            <div class="action-section">
+              <button id="decode-btn" class="primary-btn">
+                Extract Hidden Data
+              </button>
+              <div
+                id="decode-progress-container"
+                class="progress-container hidden"
+              >
+                <div id="decode-progress-bar" class="progress-bar"></div>
+              </div>
+              <div id="decode-status" class="status-msg"></div>
+            </div>
 
             <div class="result-area">
-              <label>Hidden Message</label>
+              <div class="result-header">
+                <label>Extracted Content</label>
+                <button id="download-extracted-file" class="hidden-btn hidden">
+                  Download File
+                </button>
+              </div>
               <div id="decoded-output" class="output-box">
-                No message extracted yet.
+                No data extracted yet.
               </div>
             </div>
-            <div id="decode-status" class="status-msg"></div>
           </div>
         </section>
       </main>

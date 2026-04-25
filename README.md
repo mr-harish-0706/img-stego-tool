@@ -12,7 +12,7 @@ Protect your privacy by embedding encrypted messages directly into image pixels,
 - **Stealth Mode**: Uses LSB steganography to ensure zero visual difference in the carrier image.
 - **User-Friendly UI**: Simple tabbed interface for encoding and decoding.
 - **Offline First**: Works entirely on your local machine—no data leaves your computer.
-- **Cross-Platform**: Built with Electron for Windows, macOS, and Linux support.
+- **Platform**: Built with Electron for Windows.
 
 ---
 
